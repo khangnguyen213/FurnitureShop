@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 54px;
+  transition: padding 0.3s ease;
+}
+
+header h1 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+header h2 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#header-center {
+  display: flex;
+  flex-direction: row;
+  column-gap: 75px;
+}
+
+#header-right {
+  display: flex;
+  flex-direction: row;
+  column-gap: 45px;
+  align-items: center;
+}
+
+.small-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.btn-1 {
+  border: 1px solid var(--Primary, #b88e2f);
+  background: #fff;
+  color: var(--Primary, #b88e2f);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  padding: 12px 80px;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.btn-1:hover {
+  color: #fff; /* Change text color on hover */
+  background: var(--Primary, #b88e2f); /* Change background color on hover */
+  border-color: var(--Primary, #b88e2f); /* Change border color on hover */
+  cursor: pointer;
+}
+
+.btn-1:active {
+  transform: translateY(2px); /* Push button slightly on click */
+}
+
+.btn-2 {
+  border: 0;
+  display: inline-flex;
+  padding: 12px 80px;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--Primary, #b88e2f);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-2:hover {
+  background: #d79c12; /* Change to a deeper shade */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow on hover */
+  cursor: pointer;
+}
+
+.btn-2:active {
+  transform: translateY(2px); /* Push button slightly on click */
+  box-shadow: none; /* Remove shadow on click */
+}
+
+footer {
+  padding: 40px 80px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.17);
+}
+
+footer h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+footer p {
+  color: #9f9f9f;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+footer h2 {
+  color: #9f9f9f;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+footer h3 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 2px 3px;
+  border-radius: 4px;
+}
+
+footer h3:hover {
+  background-color: #d79c1240;
+  cursor: pointer;
+}
+
+footer h4 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+footer .col {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: flex-start;
+}
+
+footer .col-title {
+  height: 36px;
+  margin-bottom: 20px;
+}
+
+footer .nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  column-gap: 10%;
+}
+
+/* Initial styles for the input field */
+footer input {
+  border: 0;
+  border-bottom: solid 1px #000;
+  padding: 2px 0;
+  padding-right: 20px;
+  margin-right: 4px;
+  transition: border-bottom-color 0.3s ease; /* Adding transition effect */
+}
+
+/* Styles when the input is focused */
+footer input:focus {
+  outline: none; /* Removing default focus outline */
+  border-bottom-color: #b88e2f; /* Changing border color when focused */
+}
+
+footer input:focus::placeholder,
+footer input:not(:placeholder-shown)::placeholder {
+  color: transparent; /* Shows the placeholder text when typing */
+  transition: color 0.3s ease; /* Adding transition for placeholder color */
+}
+
+footer button {
+  color: #000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1px #000;
+  padding: 2px 0;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Adding transition effect */
+}
+
+/* Animation for the button when hovered */
+footer button:hover {
+  box-shadow: 0px 2px gray;
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+footer button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
