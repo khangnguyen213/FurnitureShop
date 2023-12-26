@@ -52,6 +52,17 @@ header h2 {
   column-gap: 75px;
 }
 
+#header-center h2 {
+  padding: 3px 9px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+#header-center h2:hover {
+  background-color: #d79c1240;
+  cursor: pointer;
+}
+
 #header-right {
   display: flex;
   flex-direction: row;
@@ -62,6 +73,16 @@ header h2 {
 .small-icon {
   height: 24px;
   width: 24px;
+  transition: padding 0s ease, transform 0s ease, border-radius 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.small-icon:hover {
+  padding: 4px;
+  transform: scale(1.5);
+  border-radius: 100%;
+  background-color: #d79c1240;
+  cursor: pointer;
 }
 
 .btn-1 {
@@ -162,11 +183,13 @@ footer h3 {
   line-height: normal;
   padding: 2px 3px;
   border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 footer h3:hover {
   background-color: #d79c1240;
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 footer h4 {
