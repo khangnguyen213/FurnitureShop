@@ -1,0 +1,121 @@
+#section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4.55/1;
+  overflow: hidden;
+  padding: 46px;
+  background: rgba(211, 211, 211, 0.436) 50%;
+}
+
+#section1 img {
+  position: absolute;
+  top: -760px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  filter: blur(3px);
+  transform: translateY(3%);
+}
+
+#section1 h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#section1 p {
+  color: var(--Font-Color, #333);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  margin-bottom: 30px;
+}
+
+#section3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+#section3 h1 {
+  color: var(--Color-Gray-1, #3a3a3a);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 48px */
+}
+
+#section3 h2 {
+  color: var(--Color-Gray-3, #3a3a3a);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  padding: 28px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#section3 p {
+  color: var(--Color-Gray-1, #3a3a3a);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 30px */
+}
+
+#section3 .cards {
+  display: grid;
+  padding: 40px 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 28px;
+}
+
+#section3 .card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#section3 .card .content {
+  padding: 10px 20px;
+}
+
+#section3 .card:hover {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#section3 img {
+  width: 100%;
+}
+
+#section3 .price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#section3 .price .normal-price {
+  text-decoration: line-through;
+  color: var(--Color-Gray-1, #8f8f8f);
+}
