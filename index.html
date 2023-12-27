@@ -38,6 +38,18 @@
         console.log(e);
         e.preventDefault();
       }
+
+      function formatMoney(amount) {
+        // Convert the number to a string and split it into parts before and after the decimal point
+        const parts = amount.toString().split('.');
+
+        // Add commas as thousand separators to the part before the decimal point
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Join the parts back together with a period (.) as the decimal separator
+        return parts.join('.');
+      }
+
       function scrollToElement(id) {
         const element = document.getElementById(id);
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
