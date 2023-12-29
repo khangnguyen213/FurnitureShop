@@ -298,3 +298,153 @@ function onClickLogout() {
   localStorage.removeItem('dataMaxAge');
   FuiToast.success(`Success logout`);
 }
+
+function stopPropagation(e) {
+  e.stopPropagation();
+}
+function hideLoginModal() {
+  const loginModal = document.getElementById('login-modal');
+  loginModal.style.display = 'none';
+}
+
+function showLoginModal() {
+  hideRegisterModal();
+  const modal = document.getElementById('login-modal');
+  modal.style.display = 'flex';
+}
+
+function hideRegisterModal() {
+  const modal = document.getElementById('register-modal');
+  modal.style.display = 'none';
+}
+
+function showRegisterModal() {
+  hideLoginModal();
+  const modal = document.getElementById('register-modal');
+  modal.style.display = 'flex';
+}
+
+function hideLoginBtn() {
+  const btn = document.getElementsByClassName('user-inactive')[0];
+  btn.style.display = 'none';
+}
+
+function showLoginBtn() {
+  hideUserBtn();
+  const btn = document.getElementsByClassName('user-inactive')[0];
+  btn.style.display = 'flex';
+}
+
+function hideUserBtn() {
+  const btn = document.getElementsByClassName('user-active');
+  btn[0].style.display = 'none';
+  btn[1].style.display = 'none';
+}
+function showUserBtn() {
+  hideLoginBtn();
+  const btn = document.getElementsByClassName('user-active');
+  btn[0].style.display = 'flex';
+  btn[1].style.display = 'flex';
+}
+
+function formatMoney(amount) {
+  // Convert the number to a string and split it into parts before and after the decimal point
+  const parts = amount.toString().split('.');
+
+  // Add commas as thousand separators to the part before the decimal point
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // Join the parts back together with a period (.) as the decimal separator
+  return parts.join('.');
+}
+
+function createLoginRegisterModal() {
+  const loginModal = document.getElementById('login-modal');
+  const registerModal = document.getElementById('register-modal');
+  loginModal.innerHTML = `<div class="bt-form-login-simple-1" onclick="stopPropagation(event)">
+  <h1 class="form-heading">Welcome Back</h1>
+  <form class="form" onsubmit="onSubmitLogin(event)" autocomplete="off">
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input
+        type="text"
+        name="email"
+        id="login-email"
+        placeholder="Email"
+        class="form-input"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password *</label>
+      <input
+        type="password"
+        name="password"
+        id="login-password"
+        placeholder="Password"
+        class="form-input"
+      />
+      <span class="error-message" id="login-error"></span>
+    </div>
+    <div class="form-meta">
+      <a href="#" class="form-link"> Forgot Password </a>
+    </div>
+    <button type="submit" class="form-btn">Login</button>
+  </form>
+  <div class="form-option">
+    Dont&#x27;t have am account?
+    <a href="#" onclick="showRegisterModal()">Sign up for free</a>
+  </div>
+</div>`;
+
+  registerModal.innerHTML = ` <div class="bt-form-login-simple-1" onclick="stopPropagation(event)">
+<h1 class="form-heading">Welcome to Furnio</h1>
+<form
+  class="form"
+  onsubmit="onSubmitRegister(event)"
+  autocomplete="off"
+>
+  <div class="form-group">
+    <label for="email">Email *</label>
+    <input
+      type="text"
+      name="email"
+      id="register-email"
+      placeholder="Email"
+      class="form-input"
+      onchange="onChangeEmailInput(event)"
+    />
+    <span class="error-message" id="register-email-error"></span>
+  </div>
+  <div class="form-group">
+    <label for="fullname">Full Name *</label>
+    <input
+      type="text"
+      name="fullname"
+      id="register-fullname"
+      placeholder="Full Name"
+      class="form-input"
+      onchange="onChangeFullNameInput(event)"
+    />
+    <span class="error-message" id="register-fullname-error"></span>
+  </div>
+  <div class="form-group">
+    <label for="password">Password *</label>
+    <input
+      type="password"
+      name="password"
+      id="register-password"
+      placeholder="Password"
+      class="form-input"
+      onchange="onChangePasswordInput(event)"
+    />
+    <span class="error-message" id="register-password-error"></span>
+  </div>
+
+  <button type="submit" class="form-btn">Register</button>
+</form>
+<div class="form-option">
+  Already have am account?
+  <a href="#" onclick="showLoginModal()">Sign in Here</a>
+</div>
+</div>`;
+}
