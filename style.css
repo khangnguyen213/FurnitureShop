@@ -95,6 +95,32 @@ header h2 {
   cursor: pointer;
 }
 
+.user-btn {
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+  padding: 4px;
+
+  transition: padding 0s ease, border-radius 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.user-btn img {
+  height: 22px;
+  width: 22px;
+  color: #000;
+}
+
+.user-btn:hover {
+  border-radius: 10px;
+  background-color: #d79c1240;
+  cursor: pointer;
+}
+
+.user-active {
+  display: none;
+}
+
 .btn-1 {
   border: 1px solid var(--Primary, #b88e2f);
   background: #fff;
@@ -458,6 +484,13 @@ aside {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.error-message {
+  display: block;
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
+
 /* Bread-scrum */
 .fui-basic-breadcrumb .breadcrumb-list,
 .fui-basic-breadcrumb .breadcrumb-link,
@@ -499,4 +532,33 @@ aside {
 
 .fui-basic-breadcrumb .breadcrumb-link:hover {
   color: #8c6d0f;
+}
+
+/* Loading Spinner */
+#loading-spinner {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: #0000003a;
+}
+
+.fui-loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 7px solid #d9ab40;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  animation: GJWA5 1s linear infinite;
+}
+@keyframes GJWA5 {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <title>Shop</title>
-    <link rel="icon" href="/assest/Meubel House_Logos-05.png" />
+    <link rel="icon" href="./assest/Meubel House_Logos-05.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="shop.css" />
   </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link rel="icon" href="./assest/Meubel House_Logos-05.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shop.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css"
+    />
+  </head>
   <body>
+    <script src="validate.js"></script>
     <script>
       function stopPropagation(e) {
         e.stopPropagation();
@@ -34,6 +47,40 @@
         modal.style.display = 'flex';
       }
 
+      function hideLoginBtn() {
+        const btn = document.getElementsByClassName('user-inactive')[0];
+        btn.style.display = 'none';
+      }
+
+      function showLoginBtn() {
+        hideUserBtn();
+        const btn = document.getElementsByClassName('user-inactive')[0];
+        btn.style.display = 'flex';
+      }
+
+      function hideUserBtn() {
+        const btn = document.getElementsByClassName('user-active');
+        btn[0].style.display = 'none';
+        btn[1].style.display = 'none';
+      }
+      function showUserBtn() {
+        hideLoginBtn();
+        const btn = document.getElementsByClassName('user-active');
+        btn[0].style.display = 'flex';
+        btn[1].style.display = 'flex';
+      }
+
+      function formatMoney(amount) {
+        // Convert the number to a string and split it into parts before and after the decimal point
+        const parts = amount.toString().split('.');
+
+        // Add commas as thousand separators to the part before the decimal point
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Join the parts back together with a period (.) as the decimal separator
+        return parts.join('.');
+      }
+
       function scrollToElement(id) {
         const element = document.getElementById(id);
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -49,6 +96,7 @@
         }
       });
     </script>
+    <div id="fui-toast"></div>
     <header id="myHeader">
       <a id="header-left" href="index.html">
         <img
@@ -67,11 +115,14 @@
       </div>
 
       <div id="header-right">
-        <a href="#" onclick="showLoginModal()">
-          <img
-            class="small-icon"
-            src="./assest/icons/mdi_account-alert-outline.png"
-          />
+        <a href="#" onclick="showLoginModal()" class="user-btn user-inactive">
+          <img src="./assest/icons/mdi_account-alert-outline.png" />
+          <span>Login</span>
+        </a>
+
+        <a href="#" class="user-btn user-active">
+          <img src="./assest/icons/mdi_account-alert-outline.png" />
+          <span id="username-placeholder"></span>
         </a>
 
         <a href="#">
@@ -83,18 +134,27 @@
             src="./assest/icons/ant-design_shopping-cart-outlined.png"
           />
         </a>
+        <a href="#" onclick="onClickLogout()">
+          <img
+            class="small-icon user-active"
+            src="./assest/icons/sign-out.png"
+          />
+        </a>
       </div>
     </header>
+    <div id="loading-spinner">
+      <div class="fui-loading-spinner"></div>
+    </div>
     <aside id="login-modal" onclick="hideLoginModal()">
       <div class="bt-form-login-simple-1" onclick="stopPropagation(event)">
         <h1 class="form-heading">Welcome Back</h1>
-        <form class="form" autocomplete="off">
+        <form class="form" onsubmit="onSubmitLogin(event)" autocomplete="off">
           <div class="form-group">
             <label for="email">Email *</label>
             <input
               type="text"
               name="email"
-              id="email"
+              id="login-email"
               placeholder="Email"
               class="form-input"
             />
@@ -104,10 +164,11 @@
             <input
               type="password"
               name="password"
-              id="password"
+              id="login-password"
               placeholder="Password"
               class="form-input"
             />
+            <span class="error-message" id="login-error"></span>
           </div>
           <div class="form-meta">
             <a href="#" class="form-link"> Forgot Password </a>
@@ -124,26 +185,46 @@
     <aside id="register-modal" onclick="hideRegisterModal()">
       <div class="bt-form-login-simple-1" onclick="stopPropagation(event)">
         <h1 class="form-heading">Welcome to Furnio</h1>
-        <form class="form" autocomplete="off">
+        <form
+          class="form"
+          onsubmit="onSubmitRegister(event)"
+          autocomplete="off"
+        >
           <div class="form-group">
             <label for="email">Email *</label>
             <input
               type="text"
               name="email"
-              id="email"
+              id="register-email"
               placeholder="Email"
               class="form-input"
+              onchange="onChangeEmailInput(event)"
             />
+            <span class="error-message" id="register-email-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input
+              type="text"
+              name="fullname"
+              id="register-fullname"
+              placeholder="Full Name"
+              class="form-input"
+              onchange="onChangeFullNameInput(event)"
+            />
+            <span class="error-message" id="register-fullname-error"></span>
           </div>
           <div class="form-group">
             <label for="password">Password *</label>
             <input
               type="password"
               name="password"
-              id="password"
+              id="register-password"
               placeholder="Password"
               class="form-input"
+              onchange="onChangePasswordInput(event)"
             />
+            <span class="error-message" id="register-password-error"></span>
           </div>
 
           <button type="submit" class="form-btn">Register</button>
@@ -224,8 +305,14 @@
       <h4>2023 furino. All rights reverved</h4>
     </footer>
     <script src="fetchData.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"
+    ></script>
     <script>
       document.addEventListener('DOMContentLoaded', fetchProducts);
+      checkLogin();
     </script>
   </body>
 </html>
