@@ -455,6 +455,8 @@ function createLoginRegisterModal() {
 </div>`;
 }
 
+createLoginRegisterModal();
+
 function createHeaderFooter() {
   const headerEl = document.querySelector('header');
   const footerEl = document.querySelector('footer');
@@ -463,7 +465,7 @@ function createHeaderFooter() {
   headerEl.innerHTML = `
   <a id="header-left" href="./">
     <img
-      src="./assest/Meubel House_Logos-05.png"
+      src="https://drive.google.com/uc?export=view&id=1c-x6Uzbj6xHtiYaJLznjwpuVfinIYOkW"
       width="50px"
       height="32px"
     />
@@ -479,28 +481,28 @@ function createHeaderFooter() {
 
   <div id="header-right">
     <a href="#" onclick="showLoginModal()" class="user-btn user-inactive">
-      <img src="./assest/icons/mdi_account-alert-outline.png" />
+      <img src="https://drive.google.com/uc?export=view&id=1sqy8Tglu9slCG_hqZ0Az3arSvQseHFQ_" />
       <span>Login</span>
     </a>
 
     <a href="#" class="user-btn user-active">
-      <img src="./assest/icons/mdi_account-alert-outline.png" />
+      <img src="https://drive.google.com/uc?export=view&id=1sqy8Tglu9slCG_hqZ0Az3arSvQseHFQ_" />
       <span id="username-placeholder"></span>
     </a>
 
     <a href="#">
-      <img class="small-icon" src="./assest/icons/akar-icons_heart.png" />
+      <img class="small-icon" src="https://drive.google.com/uc?export=view&id=1bLLsalIsgpK86L_cjS-yICHnMhnQB3UC" />
     </a>
     <a href="${rootUrl}/cart/">
       <img
         class="small-icon"
-        src="./assest/icons/ant-design_shopping-cart-outlined.png"
+        src="https://drive.google.com/uc?export=view&id=1E3oMrXbkhv_HqFeg1H_kRaLJlk5JjL5I"
       />
     </a>
     <a href="#" onclick="onClickLogout()">
       <img
         class="small-icon user-active"
-        src="./assest/icons/sign-out.png"
+        src="https://drive.google.com/uc?export=view&id=1U3QAfC-pUTKYTSCUjTj9eASzg07pOR6n"
       />
     </a>
   </div>
