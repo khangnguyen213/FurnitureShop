@@ -13,7 +13,6 @@
     />
   </head>
   <body>
-    <script src="validate.js"></script>
     <script>
       function scrollToElement(id) {
         const element = document.getElementById(id);
@@ -31,51 +30,7 @@
       });
     </script>
     <div id="fui-toast"></div>
-    <header id="myHeader">
-      <a id="header-left" href="./">
-        <img
-          src="./assest/Meubel House_Logos-05.png"
-          width="50px"
-          height="32px"
-        />
-        <h1>Furnio</h1>
-      </a>
-
-      <div id="header-center">
-        <a href="./">Home</a>
-        <a href="./shop/">Shop</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </div>
-
-      <div id="header-right">
-        <a href="#" onclick="showLoginModal()" class="user-btn user-inactive">
-          <img src="./assest/icons/mdi_account-alert-outline.png" />
-          <span>Login</span>
-        </a>
-
-        <a href="#" class="user-btn user-active">
-          <img src="./assest/icons/mdi_account-alert-outline.png" />
-          <span id="username-placeholder"></span>
-        </a>
-
-        <a href="#">
-          <img class="small-icon" src="./assest/icons/akar-icons_heart.png" />
-        </a>
-        <a href="./cart/">
-          <img
-            class="small-icon"
-            src="./assest/icons/ant-design_shopping-cart-outlined.png"
-          />
-        </a>
-        <a href="#" onclick="onClickLogout()">
-          <img
-            class="small-icon user-active"
-            src="./assest/icons/sign-out.png"
-          />
-        </a>
-      </div>
-    </header>
+    <header id="myHeader"></header>
     <div id="loading-spinner">
       <div class="fui-loading-spinner"></div>
     </div>
@@ -195,6 +150,7 @@
       <hr color="#D9D9D9" size="1" />
       <h4>2023 furino. All rights reverved</h4>
     </footer>
+    <script src="validate.js"></script>
     <script src="fetchData.js"></script>
 
     <script

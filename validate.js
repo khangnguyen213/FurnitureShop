@@ -454,3 +454,57 @@ function createLoginRegisterModal() {
 </div>
 </div>`;
 }
+
+function createHeaderFooter() {
+  const headerEl = document.querySelector('header');
+  const footerEl = document.querySelector('footer');
+
+  const rootUrl = location.origin;
+  headerEl.innerHTML = `
+  <a id="header-left" href="./">
+    <img
+      src="./assest/Meubel House_Logos-05.png"
+      width="50px"
+      height="32px"
+    />
+    <h1>Furnio</h1>
+  </a>
+
+  <div id="header-center">
+    <a href="${rootUrl}">Home</a>
+    <a href="${rootUrl}/shop">Shop</a>
+    <a href="${rootUrl}/#">About</a>
+    <a href="${rootUrl}/#">Contact</a>
+  </div>
+
+  <div id="header-right">
+    <a href="#" onclick="showLoginModal()" class="user-btn user-inactive">
+      <img src="./assest/icons/mdi_account-alert-outline.png" />
+      <span>Login</span>
+    </a>
+
+    <a href="#" class="user-btn user-active">
+      <img src="./assest/icons/mdi_account-alert-outline.png" />
+      <span id="username-placeholder"></span>
+    </a>
+
+    <a href="#">
+      <img class="small-icon" src="./assest/icons/akar-icons_heart.png" />
+    </a>
+    <a href="${rootUrl}/cart/">
+      <img
+        class="small-icon"
+        src="./assest/icons/ant-design_shopping-cart-outlined.png"
+      />
+    </a>
+    <a href="#" onclick="onClickLogout()">
+      <img
+        class="small-icon user-active"
+        src="./assest/icons/sign-out.png"
+      />
+    </a>
+  </div>
+  `;
+}
+
+createHeaderFooter();
