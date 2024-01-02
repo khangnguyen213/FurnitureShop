@@ -83,9 +83,7 @@
 
     <aside id="register-modal" onclick="hideRegisterModal()"></aside>
 
-    <section id="section1"></section>
-
-    <section id="section3">
+    <section id="section1">
       <div class="cards" id="productsList">
         <!-- fetchProduct here -->
       </div>
@@ -128,8 +126,11 @@
     ></script>
     <script>
       createLoginRegisterModal();
-      document.addEventListener('DOMContentLoaded', fetchProducts);
-      checkLogin();
+      if (checkLogin()) {
+        fetchCarts();
+      } else {
+        FuiToast.warning('You must sign in to see!');
+      }
     </script>
   </body>
 </html>

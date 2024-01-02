@@ -228,16 +228,21 @@ function onSubmitRegister(e) {
 function checkLogin() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const dataMaxAge = new Date(JSON.parse(localStorage.getItem('dataMaxAge')));
-  if (!currentUser) return;
-  if (!dataMaxAge) return;
+  if (!currentUser) return false;
+  if (!dataMaxAge) return false;
   const now = new Date();
-  if (now.getTime() > dataMaxAge.getTime()) return;
+  if (now.getTime() > dataMaxAge.getTime()) {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('dataMaxAge');
+    return false;
+  }
   hideLoginModal();
   showUserBtn();
   const accElement = document.getElementById('username-placeholder');
   now.setHours(now.getHours() + 1);
   accElement.textContent = getFirstTwoWords(currentUser.fullname);
   localStorage.dataMaxAge = JSON.stringify(now);
+  return true;
 }
 
 function onSubmitLogin(e) {
@@ -297,6 +302,7 @@ function onClickLogout() {
   localStorage.removeItem('currentUser');
   localStorage.removeItem('dataMaxAge');
   FuiToast.success(`Success logout`);
+  setTimeout(() => location.reload(), 300);
 }
 
 function stopPropagation(e) {
