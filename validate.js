@@ -472,7 +472,7 @@ function createHeaderFooter() {
 
   <div id="header-center">
     <a href="${rootUrl}">Home</a>
-    <a href="${rootUrl}/shop">Shop</a>
+    <a href="${rootUrl}/shop/">Shop</a>
     <a href="${rootUrl}/#">About</a>
     <a href="${rootUrl}/#">Contact</a>
   </div>
@@ -504,6 +504,37 @@ function createHeaderFooter() {
       />
     </a>
   </div>
+  `;
+
+  footerEl.innerHTML = `
+  <div class="nav">
+  <div class="col">
+    <h1 class="col-title">Funiro.</h1>
+    <p>400 University Drive Suite 200 Coral Gables,<br />FL 33134 USA</p>
+  </div>
+  <div class="col">
+    <h2 class="col-title">Links</h2>
+    <h3>Home</h3>
+    <h3>Shop</h3>
+    <h3>About</h3>
+    <h3>Contact</h3>
+  </div>
+  <div class="col">
+    <h2 class="col-title">Help</h2>
+    <h3>Payment Options</h3>
+    <h3>Returns</h3>
+    <h3>Privacy Policies</h3>
+  </div>
+  <div class="col">
+    <h2 class="col-title">Newsletter</h2>
+    <div>
+      <input type="email" placeholder="Enter Your Email Address" />
+      <button>SUBCRIBE</button>
+    </div>
+  </div>
+</div>
+<hr color="#D9D9D9" size="1" />
+<h4>2023 furino. All rights reverved</h4>
   `;
 }
 
