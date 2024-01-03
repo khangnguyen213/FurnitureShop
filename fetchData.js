@@ -12,7 +12,9 @@ function formatMoney(amount) {
 async function onAddCart(productId, quantity, productTitle) {
   if (!localStorage.getItem('currentUser'))
     return FuiToast.info('You must login to use cart');
-  const accountId = JSON.parse(localStorage.getItem('currentUser'))._id;
+  const accountId = JSON.parse(
+    decodeString(localStorage.getItem('currentUser'))
+  )._id;
   const requestBody = {
     accountId,
     productId,
@@ -37,7 +39,9 @@ async function onAddCart(productId, quantity, productTitle) {
 
 async function onDeleteCart(productId, productTitle) {
   if (!localStorage.getItem('currentUser')) return;
-  const accountId = JSON.parse(localStorage.getItem('currentUser'))._id;
+  const accountId = JSON.parse(
+    decodeString(localStorage.getItem('currentUser'))
+  )._id;
   const requestBody = {
     accountId,
     productId,
@@ -93,7 +97,11 @@ async function fetchCarts() {
   console.log('Fetching...');
 
   if (!localStorage.getItem('currentUser')) return;
-  const accountId = JSON.parse(localStorage.getItem('currentUser'))._id;
+  const accountId = JSON.parse(
+    decodeString(localStorage.getItem('currentUser'))
+  )._id;
+
+  console.log(decodeString(localStorage.getItem('currentUser')));
 
   const subtotalEl = document.getElementById('payment_subtotal');
   const totalEl = document.getElementById('payment_total');

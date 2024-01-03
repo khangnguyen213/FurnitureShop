@@ -226,7 +226,9 @@ function onSubmitRegister(e) {
 }
 
 function checkLogin() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const currentUser = JSON.parse(
+    decodeString(localStorage.getItem('currentUser'))
+  );
   const dataMaxAge = new Date(JSON.parse(localStorage.getItem('dataMaxAge')));
   if (!currentUser) return false;
   if (!dataMaxAge) return false;
@@ -280,7 +282,7 @@ function onSubmitLogin(e) {
         const now = new Date();
         now.setHours(now.getHours() + 1);
         accElement.textContent = getFirstTwoWords(data.fullname);
-        localStorage.currentUser = JSON.stringify(data);
+        localStorage.currentUser = hashString(JSON.stringify(data));
         localStorage.dataMaxAge = JSON.stringify(now);
         setTimeout(
           () => FuiToast.success(`Welcome back, ${data.fullname}`),
@@ -562,43 +564,33 @@ function createHeaderFooter() {
 
 createHeaderFooter();
 
-// Hàm hashString nhận vào một chuỗi 'str' và mã hóa nó.
-// hash = băm ... có thể hiểu là mã hóa
 function hashString(str) {
-  // key để mã hóa và so sánh phải giống nhau thì mới có thể kiểm tra được
   let key = 'key';
-
-  // Tạo chuỗi 'charKey' từ key đã cho bằng cách chuyển đổi từng ký tự trong key thành mã Unicode,
-  // sau đó nối các mã Unicode này lại thành một chuỗi.
   let charKey = key
     .split('')
     .map((word) => word.charCodeAt())
     .join('');
-
-  // Chuyển đổi mỗi ký tự trong chuỗi 'str' thành mã Unicode, sau đó nối các mã Unicode này với chuỗi 'charKey'
-  // để tạo ra một chuỗi đã hash và gán cho biến 'hashedStr'.
   let hashedStr = str
     .split('')
     .map((word) => word.charCodeAt())
     .join(charKey);
-
-  // Trả về chuỗi đã hash.
   return hashedStr;
 }
 
-// Hàm compareString so sánh một chuỗi 'str' với một chuỗi đã hash 'hashedStr'.
-function compareString(str, hashedStr) {
-  // key để mã hóa và so sánh phải giống nhau thì mới có thể kiểm tra được
+function decodeString(hashedStr) {
   let key = 'key';
-
-  // Tạo chuỗi 'charKey' từ key đã cho bằng cách chuyển đổi từng ký tự trong key thành mã Unicode,
-  // sau đó nối các mã Unicode này lại thành một chuỗi.
   let charKey = key
     .split('')
     .map((word) => word.charCodeAt())
     .join('');
+  return String.fromCharCode(...hashedStr.split(charKey));
+}
 
-  //vì phía trên mã hóa bằng cách nối các chữ của mật khẩu gốc băng join(charKey)
-  // nên giờ ta sẽ phân tách mật khẩu đã được mã hóa ra bằng split(charkey)
+function compareString(str, hashedStr) {
+  let key = 'key';
+  let charKey = key
+    .split('')
+    .map((word) => word.charCodeAt())
+    .join('');
   return String.fromCharCode(...hashedStr.split(charKey)) == str ? true : false;
 }
