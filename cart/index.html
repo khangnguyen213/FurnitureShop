@@ -13,34 +13,67 @@
     />
   </head>
   <body>
-    <script>
-      function scrollToElement(id) {
-        const element = document.getElementById(id);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      window.addEventListener('scroll', function () {
-        const header = document.getElementById('myHeader');
-        let scrollPosition = window.scrollY;
-
-        if (scrollPosition > 0) {
-          header.style.padding = '8px 54px';
-        } else {
-          header.style.padding = '32px 54px';
-        }
-      });
-    </script>
     <div id="fui-toast"></div>
     <header id="myHeader"></header>
     <div id="loading-spinner">
       <div class="fui-loading-spinner"></div>
     </div>
     <aside id="login-modal" onclick="hideLoginModal()"></aside>
-
     <aside id="register-modal" onclick="hideRegisterModal()"></aside>
 
+    <section id="section0">
+      <img
+        src="https://media.licdn.com/dms/image/D5612AQFCtS4xJysUJQ/article-inline_image-shrink_1000_1488/0/1693805390040?e=1709164800&v=beta&t=q3uD5BE-dY3hdB2fUVsWw3XqZYeJxgbbESw5fndkgp4"
+      />
+      <div>
+        <h1>Cart</h1>
+        <div class="fui-basic-breadcrumb">
+          <ul class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="../" class="breadcrumb-link"> Home </a>
+            </li>
+
+            <li class="breadcrumb-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M9.793 7.793a1 1 0 000 1.414L12.586 12l-2.793 2.793a1 1 0 101.414 1.414l3.5-3.5a1 1 0 000-1.414l-3.5-3.5a1 1 0 00-1.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <a href="#" class="breadcrumb-link">Cart</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <section id="section1">
       <div class="cards" id="productsList">
         <!-- fetchProduct here -->
+      </div>
+      <div class="payment">
+        <div class="payment-item">
+          <h2>Subtotal:</h2>
+          <h3 id="payment_subtotal">0</h3>
+        </div>
+
+        <div class="payment-item">
+          <h2>Discounted:</h2>
+          <h3 id="payment_discounted">0</h3>
+        </div>
+        <hr color="#000" size="4" width="100%" />
+        <div class="payment-item">
+          <h1>Total:</h1>
+          <h2 id="payment_total">0</h2>
+        </div>
+        <button>Checkout</button>
       </div>
     </section>
 

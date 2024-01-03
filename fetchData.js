@@ -35,6 +35,31 @@ async function onAddCart(productId, quantity, productTitle) {
   });
 }
 
+async function onDeleteCart(productId, productTitle) {
+  if (!localStorage.getItem('currentUser')) return;
+  const accountId = JSON.parse(localStorage.getItem('currentUser'))._id;
+  const requestBody = {
+    accountId,
+    productId,
+  };
+  const loadingSpiner = document.getElementById('loading-spinner');
+  loadingSpiner.style.display = 'flex';
+  const response = await fetch(`https://furniture-shop-be.vercel.app/cart`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  });
+  loadingSpiner.style.display = 'none';
+  if (response.status != 200) return FuiToast.warning('Something went wrong!');
+  FuiToast.success(` ${productTitle} removed from your cart`, {
+    title: 'Success',
+  });
+  fetchCarts();
+}
+
 async function fetchProducts() {
   console.log('Fetching...');
   const cards = document.getElementById('productsList');
@@ -66,8 +91,14 @@ async function fetchProducts() {
 
 async function fetchCarts() {
   console.log('Fetching...');
+
   if (!localStorage.getItem('currentUser')) return;
   const accountId = JSON.parse(localStorage.getItem('currentUser'))._id;
+
+  const subtotalEl = document.getElementById('payment_subtotal');
+  const totalEl = document.getElementById('payment_total');
+  const discountedEl = document.getElementById('payment_discounted');
+
   const cards = document.getElementById('productsList');
   let productsHtml = ``;
   const loadingSpiner = document.getElementById('loading-spinner');
@@ -85,6 +116,9 @@ async function fetchCarts() {
   data.products.forEach(
     ({ product, quantity }) =>
       (productsHtml += `<div class="card">
+      <button class="btn-delete" onclick="onDeleteCart('${product._id}', '${
+        product.title
+      }')"><img src="https://cdn-icons-png.flaticon.com/512/7124/7124232.png" width="100%"/></button>
     <img src=${product.images[0]} />
     <div class="content">
       <h2>${product.title}</h2>
@@ -92,7 +126,7 @@ async function fetchCarts() {
         <p class="discount-price">${formatMoney(product.discountedprice)}</p>
         <p class="normal-price">${formatMoney(product.price)}</p>
       </div>
-      <div class="price">
+      <div class="buttons">
       <button class="button1">-</button>
       <h2>${quantity}</h2>
       <button class="button2">+</button>
@@ -101,4 +135,7 @@ async function fetchCarts() {
   </div>`)
   );
   cards.innerHTML = productsHtml;
+  subtotalEl.innerText = `${formatMoney(data.totalPrice)}`;
+  discountedEl.innerText = `${formatMoney(data.totalDiscounted)}`;
+  totalEl.innerText = `${formatMoney(data.totalDiscountedPrice)}`;
 }

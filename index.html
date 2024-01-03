@@ -13,22 +13,6 @@
     />
   </head>
   <body>
-    <script>
-      function scrollToElement(id) {
-        const element = document.getElementById(id);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      window.addEventListener('scroll', function () {
-        const header = document.getElementById('myHeader');
-        let scrollPosition = window.scrollY;
-
-        if (scrollPosition > 0) {
-          header.style.padding = '8px 54px';
-        } else {
-          header.style.padding = '32px 54px';
-        }
-      });
-    </script>
     <div id="fui-toast"></div>
     <header id="myHeader"></header>
     <div id="loading-spinner">
