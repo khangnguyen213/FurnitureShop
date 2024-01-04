@@ -484,6 +484,7 @@ function createHeaderFooter() {
   });
 
   const rootUrl = location.origin;
+  const path = location.pathname;
   headerEl.innerHTML = `
   <a id="header-left" href="${rootUrl}">
     <img
@@ -495,10 +496,16 @@ function createHeaderFooter() {
   </a>
 
   <div id="header-center">
-    <a href="${rootUrl}">Home</a>
-    <a href="${rootUrl}/shop/">Shop</a>
-    <a href="${rootUrl}/#">About</a>
-    <a href="${rootUrl}/#">Contact</a>
+    <a class=${path === '/' ? 'page-active' : ''} href="${rootUrl}">Home</a>
+    <a ${
+      path.includes('shop') ? 'page-active' : ''
+    } href="${rootUrl}/shop/">Shop</a>
+    <a ${
+      path.includes('about') ? 'page-active' : ''
+    } href="${rootUrl}/#">About</a>
+    <a ${
+      path.includes('contact') ? 'page-active' : ''
+    } href="${rootUrl}/#">Contact</a>
   </div>
 
   <div id="header-right">

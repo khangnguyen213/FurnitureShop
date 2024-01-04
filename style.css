@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 a,
@@ -71,6 +70,10 @@ header h2 {
 #header-center a:hover {
   background-color: #d79c1240;
   cursor: pointer;
+}
+
+#header-center .page-active {
+  background-color: #d79c12dd;
 }
 
 #header-right {
