@@ -462,7 +462,7 @@ createLoginRegisterModal();
 function navigateReceipt(e) {
   e.preventDefault();
   e.stopPropagation();
-  location.replace(`${location.origin}/receipt`);
+  location.replace(`${location.origin}/receipt/`);
 }
 
 function scrollToElement(id) {
