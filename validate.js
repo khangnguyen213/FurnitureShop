@@ -459,6 +459,12 @@ function createLoginRegisterModal() {
 
 createLoginRegisterModal();
 
+function navigateReceipt(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  location.replace(`${location.origin}/receipt`);
+}
+
 function scrollToElement(id) {
   const element = document.getElementById(id);
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -485,6 +491,7 @@ function createHeaderFooter() {
 
   const rootUrl = location.origin;
   const path = location.pathname;
+
   headerEl.innerHTML = `
   <a id="header-left" href="${rootUrl}">
     <img
@@ -514,9 +521,10 @@ function createHeaderFooter() {
       <span>Login</span>
     </a>
 
-    <a href="#" class="user-btn user-active">
+    <a class="user-btn user-active" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
       <img src="https://drive.google.com/uc?export=view&id=1sqy8Tglu9slCG_hqZ0Az3arSvQseHFQ_" />
       <span id="username-placeholder"></span>
+      <div class="dropdown"><button>Your Profile</button> <button onclick="navigateReceipt(event)">Your Purchase</button></div>
     </a>
 
     <a href="#">
