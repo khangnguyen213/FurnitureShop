@@ -496,16 +496,16 @@ function createHeaderFooter() {
   </a>
 
   <div id="header-center">
-    <a class=${path === '/' ? 'page-active' : ''} href="${rootUrl}">Home</a>
-    <a class=${
+    <a class="${path === '/' ? 'page-active' : ''}" href="${rootUrl}">Home</a>
+    <a class="${
       path.includes('shop') ? 'page-active' : ''
-    } href="${rootUrl}/shop/">Shop</a>
-    <a ${
+    }" href="${rootUrl}/shop/">Shop</a>
+    <a class="${
       path.includes('about') ? 'page-active' : ''
-    } href="${rootUrl}/#">About</a>
-    <a class=${
+    }" href="${rootUrl}/#">About</a>
+    <a class="${
       path.includes('contact') ? 'page-active' : ''
-    } href="${rootUrl}/#">Contact</a>
+    }" href="${rootUrl}/#">Contact</a>
   </div>
 
   <div id="header-right">
