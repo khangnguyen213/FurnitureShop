@@ -40,7 +40,9 @@ function displayReceipts(receiptsData) {
     receiptDiv.innerHTML = `
         <div class="header">
           <h1>Receipt #${index + 1}</h1>
-          <div class="purchaseDate">Purchase Date: ${receipt.purchaseDate}</div>
+          <div class="purchaseDate">Purchase Date: ${new Date(
+            receipt.purchaseDate
+          ).toLocaleDateString()}</div>
         </div>
         <div class="buyerInfo"><strong>Buyer:</strong> ${
           receipt.buyerName
