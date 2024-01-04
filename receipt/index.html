@@ -2,10 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Shop</title>
+    <title>Receipt</title>
     <link rel="icon" href="../assest/furniologo.png" />
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="./shop.css" />
+    <link rel="stylesheet" href="receipt.css" />
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -19,13 +20,14 @@
       <div class="fui-loading-spinner"></div>
     </div>
     <aside id="login-modal" onclick="hideLoginModal()"></aside>
-
     <aside id="register-modal" onclick="hideRegisterModal()"></aside>
 
-    <section id="section1">
-      <img src="../assest/ff74c027a1888544144abe4be6e02cbf.jpg" />
+    <section id="section0">
+      <img
+        src="https://media.licdn.com/dms/image/D5612AQFCtS4xJysUJQ/article-inline_image-shrink_1000_1488/0/1693805390040?e=1709164800&v=beta&t=q3uD5BE-dY3hdB2fUVsWw3XqZYeJxgbbESw5fndkgp4"
+      />
       <div>
-        <h1>Shop</h1>
+        <h1>Receipt</h1>
         <div class="fui-basic-breadcrumb">
           <ul class="breadcrumb-list">
             <li class="breadcrumb-item">
@@ -47,30 +49,28 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <a href="#" class="breadcrumb-link">Shop</a>
+              <a href="#" class="breadcrumb-link">Receipt</a>
             </li>
           </ul>
         </div>
       </div>
     </section>
-
-    <section id="section3">
-      <div class="cards" id="productsList">
-        <!-- fetchProduct here -->
-      </div>
-    </section>
+    <section class="receipts-container" id="receiptsContainer"></section>
 
     <footer></footer>
-    <script src="../fetchData.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"
     ></script>
     <script src="../validate.js"></script>
-
+    <script src="../fetchData.js"></script>
+    <script src="receipt.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', fetchProducts);
-      checkLogin();
+      if (checkLogin()) {
+        displayReceipts();
+      } else {
+        FuiToast.warning('You must sign in to see!');
+      }
     </script>
   </body>
 </html>

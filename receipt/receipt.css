@@ -1,0 +1,96 @@
+.receipts-container {
+  padding: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  background-color: #f4f4f4;
+}
+
+.receipt {
+  width: 300px;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  border-bottom: 2px dashed #b88e2f;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 5px 0;
+  color: #b88e2f;
+}
+
+.purchaseDate {
+  font-size: 0.9em;
+}
+
+.buyerInfo {
+  margin-bottom: 15px;
+}
+
+.productsList {
+  border-top: 1px dashed #b88e2f;
+  border-bottom: 1px dashed #b88e2f;
+  padding: 10px 0;
+}
+
+.productItem {
+  margin-bottom: 5px;
+}
+
+.totalPrice {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 2px dashed #b88e2f;
+}
+
+#section0 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4.55/1;
+  overflow: hidden;
+  padding: 46px;
+  background: rgba(211, 211, 211, 0.436) 50%;
+}
+
+#section0 img {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  filter: blur(3px);
+  transform: translateY(3%);
+}
+
+#section0 h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#section0 p {
+  color: var(--Font-Color, #333);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+  margin-bottom: 30px;
+}

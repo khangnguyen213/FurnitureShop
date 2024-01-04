@@ -485,7 +485,7 @@ function createHeaderFooter() {
 
   const rootUrl = location.origin;
   headerEl.innerHTML = `
-  <a id="header-left" href="./">
+  <a id="header-left" href="${rootUrl}">
     <img
       src="https://drive.google.com/uc?export=view&id=1c-x6Uzbj6xHtiYaJLznjwpuVfinIYOkW"
       width="50px"
@@ -578,6 +578,7 @@ function hashString(str) {
 }
 
 function decodeString(hashedStr) {
+  if (!hashedStr) return null;
   let key = 'key';
   let charKey = key
     .split('')
