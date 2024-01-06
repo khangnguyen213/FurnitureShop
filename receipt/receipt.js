@@ -13,16 +13,18 @@ async function fetchReceipts() {
     `https://furniture-shop-be.vercel.app/receipt?id=${accountId}`
   );
   const data = await response.json();
+  console.log(data.receipts[0]._id);
 
   let receiptsData = [];
 
   data.receipts.forEach(
-    ({ accountId, productList, totalPayment, paymentDate }) =>
+    ({ accountId, productList, totalPayment, paymentDate, _id }) =>
       receiptsData.push({
         buyerName: accountId.fullname,
         products: productList,
         purchaseDate: paymentDate,
         totalPayment,
+        id: _id,
       })
   );
 
@@ -33,16 +35,17 @@ async function fetchReceipts() {
 function displayReceipts(receiptsData) {
   if (!receiptsData) return;
   const receiptsContainer = document.getElementById('receiptsContainer');
-  receiptsData.forEach((receipt, index) => {
+  receiptsData.forEach((receipt) => {
     const receiptDiv = document.createElement('div');
     receiptDiv.classList.add('receipt');
 
     receiptDiv.innerHTML = `
         <div class="header">
-          <h1>Receipt #${index + 1}</h1>
-          <div class="purchaseDate">Purchase Date: ${new Date(
+          <h1>Receipt</h1>
+          <small>No.${receipt.id}</small>
+          <div class="purchaseDate">Purchase Date: ${formatUTCDate(
             receipt.purchaseDate
-          ).toLocaleDateString()}</div>
+          )}</div>
         </div>
         <div class="buyerInfo"><strong>Buyer:</strong> ${
           receipt.buyerName
