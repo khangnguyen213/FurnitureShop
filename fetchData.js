@@ -101,8 +101,6 @@ async function fetchCarts() {
     decodeString(localStorage.getItem('currentUser'))
   )._id;
 
-  console.log(decodeString(localStorage.getItem('currentUser')));
-
   const subtotalEl = document.getElementById('payment_subtotal');
   const totalEl = document.getElementById('payment_total');
   const discountedEl = document.getElementById('payment_discounted');
