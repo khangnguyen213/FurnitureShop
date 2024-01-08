@@ -1,4 +1,4 @@
-async function fetchReceipt() {
+async function checkout() {
   console.log('Fetching...');
 
   if (!localStorage.getItem('currentUser')) return;
@@ -23,12 +23,12 @@ async function fetchReceipt() {
     const data = await response.json();
 
     let receiptData = {
-      buyerName: data.receipt.accountId.fullname,
+      buyerName: data.receipt.buyername,
       products: data.receipt.productList,
       purchaseDate: data.receipt.paymentDate,
       totalPayment: data.receipt.totalPayment,
     };
-    console.log(receiptData);
+    console.log(data.receipt);
 
     displayReceipt(receiptData);
   } catch (err) {
