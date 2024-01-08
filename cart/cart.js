@@ -1,5 +1,5 @@
 async function checkout() {
-  console.log('Fetching...');
+  console.log('Fetching..');
 
   if (!localStorage.getItem('currentUser')) return;
   const accountId = JSON.parse(
