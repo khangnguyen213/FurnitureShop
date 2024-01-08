@@ -60,12 +60,10 @@ function displayReceipt(receiptData) {
   receiptData.products.forEach((item) => {
     productsHTML += `
         <div class="productItem">
-          ${item.product.title}<span style="float:right;">${formatMoney(
-      item.quantity * item.product.discountedprice || item.product.price
+          ${item.title}<span style="float:right;">${formatMoney(
+      item.quantity * importitem.price
     )}</span><br>
-          ${item.quantity} x ${formatMoney(
-      item.product.discountedprice || item.product.price
-    )}
+          ${item.quantity} x ${formatMoney(item.price)}
         </div>
       `;
   });
