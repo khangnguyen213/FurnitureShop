@@ -1,58 +1,3 @@
-.receipts-container {
-  padding: 40px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  background-color: #f4f4f4;
-}
-
-.receipt {
-  width: 300px;
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  text-align: center;
-  border-bottom: 2px dashed #b88e2f;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-h1 {
-  margin: 5px 0;
-  color: #b88e2f;
-}
-
-.purchaseDate {
-  font-size: 0.9em;
-}
-
-.buyerInfo {
-  margin-bottom: 15px;
-}
-
-.productsList {
-  border-top: 1px dashed #b88e2f;
-  border-bottom: 1px dashed #b88e2f;
-  padding: 10px 0;
-}
-
-.productItem {
-  margin-bottom: 5px;
-}
-
-.totalPrice {
-  font-weight: bold;
-  text-align: right;
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 2px dashed #b88e2f;
-}
-
 #section0 {
   display: flex;
   flex-direction: column;
@@ -93,4 +38,98 @@ h1 {
   font-weight: 500;
   line-height: 24px; /* 133.333% */
   margin-bottom: 30px;
+}
+
+.fui-accordion {
+  margin: 0 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  background-color: #f4f4f4;
+}
+.fui-accordion .accordion-content {
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+}
+.fui-accordion .accordion-content.open {
+  padding-bottom: 10px;
+}
+.fui-accordion .accordion-content header {
+  min-height: 50px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  background: var(--Primary, #b88e2f);
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px 72px;
+  align-items: flex-start;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+}
+.fui-accordion .accordion-content.open header {
+  min-height: 35px;
+}
+.fui-accordion .accordion-content header .title {
+  width: 90%;
+}
+
+.fui-accordion .icon {
+  height: 24px;
+}
+.fui-accordion .icon-plus.hidden {
+  display: none;
+}
+.fui-accordion .icon-minus {
+  display: none;
+}
+.fui-accordion .icon-minus.active {
+  display: block;
+}
+.fui-accordion .accordion-content .description {
+  height: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  transition: all 0.3s linear;
+  background-color: #fff;
+}
+
+.description {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+}
+
+.buyer-info {
+  margin-bottom: 10px;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.product-item {
+  margin-bottom: 5px;
+}
+
+.item-price {
+  float: right;
+}
+
+.total-price {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.buyer-info {
+  padding-top: 10px;
+}
+
+.total-price {
+  padding-bottom: 10px;
 }
