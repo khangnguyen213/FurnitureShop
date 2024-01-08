@@ -28,8 +28,6 @@ async function checkout() {
       purchaseDate: data.receipt.paymentDate,
       totalPayment: data.receipt.totalPayment,
     };
-    console.log(data.receipt);
-
     displayReceipt(receiptData);
   } catch (err) {
     console.log(err);
@@ -61,7 +59,7 @@ function displayReceipt(receiptData) {
     productsHTML += `
         <div class="productItem">
           ${item.title}<span style="float:right;">${formatMoney(
-      item.quantity * importitem.price
+      item.quantity * item.price
     )}</span><br>
           ${item.quantity} x ${formatMoney(item.price)}
         </div>
@@ -71,6 +69,6 @@ function displayReceipt(receiptData) {
   document.getElementById('productsList1').innerHTML = productsHTML;
 
   document.getElementById('totalPrice').innerText = `Total: ${formatMoney(
-    receipt.totalPayment
+    receiptData.totalPayment
   )}`;
 }
