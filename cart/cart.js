@@ -72,3 +72,5 @@ function displayReceipt(receiptData) {
     receiptData.totalPayment
   )}`;
 }
+
+document.getElementById('btn-checkout').addEventListener('click', checkout);
