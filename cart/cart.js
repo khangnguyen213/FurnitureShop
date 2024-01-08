@@ -73,4 +73,6 @@ function displayReceipt(receiptData) {
   )}`;
 }
 
-document.getElementById('btn-checkout').addEventListener('click', checkout);
+document
+  .getElementById('btn-checkout')
+  .addEventListener('click', () => checkout());
