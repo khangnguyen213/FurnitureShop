@@ -94,7 +94,7 @@ header h2 {
   display: none;
 }
 
-#header-right:hover .dropdown {
+#header-right .user-btn.user-active:hover .dropdown {
   display: block;
   border-radius: 4px;
   border-top-left-radius: 0px;

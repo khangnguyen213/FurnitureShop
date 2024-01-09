@@ -32,9 +32,18 @@ async function onAddCart(productId, quantity, productTitle) {
   });
   loadingSpiner.style.display = 'none';
   if (response.status != 200) return FuiToast.warning('Something went wrong!');
-  FuiToast.success(`${quantity} x ${productTitle} added to your cart`, {
-    title: 'Success',
-  });
+
+  if (quantity > 0)
+    FuiToast.success(`${quantity} x ${productTitle} added to your cart`, {
+      title: 'Success',
+    });
+
+  if (quantity < 0)
+    FuiToast.success(`${quantity} x ${productTitle} removed your cart`, {
+      title: 'Success',
+    });
+
+  if ((location.pathname = '/cart/')) fetchCarts();
 }
 
 async function onDeleteCart(productId, productTitle) {
@@ -133,9 +142,13 @@ async function fetchCarts() {
         <p class="normal-price">${formatMoney(product.price)}</p>
       </div>
       <div class="buttons">
-      <button class="button1">-</button>
+      <button class="button1" onclick="onAddCart('${product._id}',-1, '${
+        product.title
+      }')">-</button>
       <h2>${quantity}</h2>
-      <button class="button2">+</button>
+      <button class="button2" onclick="onAddCart('${product._id}',1, '${
+        product.title
+      }')">+</button>
     </div>
     </div>
   </div>`)
