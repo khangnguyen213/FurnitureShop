@@ -39,11 +39,19 @@ async function checkout() {
 
 function displayReceipt(receiptData) {
   const receiptModal = document.getElementById('receiptModal');
+  const subtotalEl = document.getElementById('payment_subtotal');
+  const totalEl = document.getElementById('payment_total');
+  const discountedEl = document.getElementById('payment_discounted');
+
   receiptModal.style.display = 'flex';
-  receiptModal.addEventListener(
-    'click',
-    () => (receiptModal.style.display = 'none')
-  );
+  receiptModal.addEventListener('click', async () => {
+    receiptModal.style.display = 'none';
+    await fetchCarts();
+    displayCart();
+    subtotalEl.innerText = `0`;
+    discountedEl.innerText = `0`;
+    totalEl.innerText = `0`;
+  });
   document.getElementById(
     'purchaseDate'
   ).innerText = `Purchase Date: ${receiptData.purchaseDate}`;

@@ -55,9 +55,21 @@
         </div>
       </div>
     </section>
-    <section class="receipts-container" id="receiptsContainer">
-      <div class="fui-accordion"></div>
-    </section>
+
+    <div class="fui-table-ui-1-2 table-accordion">
+      <table class="fold-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Receipt</th>
+            <th>Customer Name</th>
+            <th>Total Price</th>
+            <th>Purchase Date</th>
+          </tr>
+        </thead>
+        <tbody class="table-accordion-body"></tbody>
+      </table>
+    </div>
 
     <footer></footer>
     <script
@@ -65,7 +77,7 @@
       src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"
     ></script>
     <script src="../validate.js"></script>
-    <script src="../fetchData.js"></script>
+    <script src="../main.js"></script>
     <script src="receipt.js"></script>
     <script>
       if (checkLogin()) {
@@ -73,6 +85,7 @@
       } else {
         FuiToast.warning('You must sign in to see!');
       }
+      fetchCarts();
     </script>
   </body>
 </html>

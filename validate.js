@@ -546,11 +546,14 @@ function createHeaderFooter() {
     <a href="#">
       <img class="small-icon" src="https://drive.google.com/uc?export=view&id=1bLLsalIsgpK86L_cjS-yICHnMhnQB3UC" />
     </a>
-    <a href="${rootUrl}/cart/">
+    <a id="btn-cart" href="${rootUrl}/cart/">
       <img
         class="small-icon"
         src="https://drive.google.com/uc?export=view&id=1E3oMrXbkhv_HqFeg1H_kRaLJlk5JjL5I"
       />
+      <div class="number-container">
+    <span class="number">0</span>
+  </div>
     </a>
     <a href="#" onclick="onClickLogout()">
       <img

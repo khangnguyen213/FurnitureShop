@@ -40,64 +40,6 @@
   margin-bottom: 30px;
 }
 
-.fui-accordion {
-  margin: 0 15px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  background-color: #f4f4f4;
-}
-.fui-accordion .accordion-content {
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #d1d5db;
-  overflow: hidden;
-}
-.fui-accordion .accordion-content.open {
-  padding-bottom: 10px;
-}
-.fui-accordion .accordion-content header {
-  min-height: 50px;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  background: var(--Primary, #b88e2f);
-  display: inline-flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 25px 72px;
-  align-items: flex-start;
-  color: #fff;
-  font-family: Poppins;
-  font-size: 16px;
-  font-weight: 500;
-}
-.fui-accordion .accordion-content.open header {
-  min-height: 35px;
-}
-.fui-accordion .accordion-content header .title {
-  width: 90%;
-}
-
-.fui-accordion .icon {
-  height: 24px;
-}
-.fui-accordion .icon-plus.hidden {
-  display: none;
-}
-.fui-accordion .icon-minus {
-  display: none;
-}
-.fui-accordion .icon-minus.active {
-  display: block;
-}
-.fui-accordion .accordion-content .description {
-  height: 0;
-  overflow: hidden;
-  padding: 0 15px;
-  transition: all 0.3s linear;
-  background-color: #fff;
-}
-
 .description {
   font-family: Arial, sans-serif;
   border: 1px solid #ccc;
@@ -133,3 +75,121 @@
 .total-price {
   padding-bottom: 10px;
 }
+
+/* Reset css */
+* {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* End reset css */
+.fui-table-ui-1-2 {
+  color: #333;
+  font-size: 14px;
+  padding: 24px;
+}
+
+.fui-table-ui-1-2 table {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.fui-table-ui-1-2 table thead th {
+  text-align: left;
+  background-color: #b88f2fc5;
+  color: white;
+  padding-block: 8px;
+}
+.fui-table-ui-1-2 table tbody .td-btn-accordion {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: all 0.3s linear;
+  background-color: transparent;
+  border: none;
+}
+.fui-table-ui-1-2 table tbody .td-btn-accordion:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.fui-table-ui-1-2 table tbody .td-btn-accordion svg {
+  transition: transform 0.3s linear;
+  width: 12px;
+  color: #333;
+}
+.fui-table-ui-1-2 table th,
+.fui-table-ui-1-2 table td {
+  padding: 16px;
+}
+.fui-table-ui-1-2 table td {
+  vertical-align: middle;
+}
+
+.fui-table-ui-1-2 table.fold-table > tbody > tr.view:nth-child(4n-1) {
+  background: #fff4db;
+}
+.fui-table-ui-1-2 table.fold-table > tbody > tr.view:hover {
+  background: #b88f2f46;
+}
+.fui-table-ui-1-2
+  table.fold-table
+  > tbody
+  > tr.view.open
+  .td-btn-accordion
+  svg {
+  transform: rotate(180deg);
+}
+.fui-table-ui-1-2 table.fold-table > tbody > tr.fold {
+  width: 100%;
+}
+.fui-table-ui-1-2 table.fold-table > tbody > tr.fold > td {
+  width: 100%;
+  padding: 0;
+}
+.fui-table-ui-1-2 .fold-content-wrap {
+  transition: all 0.3s linear;
+  height: 0px;
+  overflow: hidden;
+}
+.fui-table-ui-1-2 .fold-content-wrap .fold-content {
+  padding: 16px;
+}
+.fui-table-ui-1-2 .fold-content-wrap .fold-content h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 126.5%; /* 30.36px */
+}
+.fui-table-ui-1-2 .fold-content-wrap .fold-content > p {
+  margin-bottom: 16px;
+  color: #4e4e4e;
+}
+.fui-table-ui-1-2 .fold-content-wrap > table > tbody tr:nth-child(even) {
+  background: #eee;
+}
+
+/*# sourceMappingURL=app.css.map */

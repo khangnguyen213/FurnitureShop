@@ -616,3 +616,27 @@ aside {
     transform: rotate(360deg);
   }
 }
+
+#btn-cart {
+  position: relative;
+}
+
+.number-container {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff3e3; /* Slightly red background */
+  border: 2px solid #b88e2f; /* Full red border */
+  border-radius: 50%; /* Make the container circular */
+  width: 30px; /* Fixed width */
+  height: 30px; /* Fixed height */
+  padding: 4px; /* Optional padding around the number */
+}
+
+.number {
+  font-size: 12px; /* Adjust font size as needed */
+  font-weight: bold;
+}

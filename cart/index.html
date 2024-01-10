@@ -67,8 +67,20 @@
       </div>
     </section>
     <section id="section1">
-      <div class="cards" id="productsList">
-        <!-- fetchProduct here -->
+      <div class="fui-table-ui-basic-linh table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Product name</th>
+              <th>Price</th>
+              <th></th>
+              <th>Quantity</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="fui-table-body"></tbody>
+        </table>
       </div>
       <div class="payment">
         <div class="payment-item">
@@ -95,11 +107,12 @@
       src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"
     ></script>
     <script src="../validate.js"></script>
-    <script src="../fetchData.js"></script>
+    <script src="../main.js"></script>
 
     <script>
       if (checkLogin()) {
         fetchCarts();
+        displayCart();
       } else {
         FuiToast.warning('You must sign in to see!');
       }

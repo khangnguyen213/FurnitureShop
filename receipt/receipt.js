@@ -13,7 +13,6 @@ async function fetchReceipts() {
     `https://furniture-shop-be.vercel.app/receipt?id=${accountId}`
   );
   const data = await response.json();
-  console.log(data.receipts[0]._id);
 
   let receiptsData = [];
 
@@ -31,119 +30,126 @@ async function fetchReceipts() {
   loadingSpiner.style.display = 'none';
   displayReceipts(receiptsData);
 
-  const accordionContent = document.querySelectorAll(
-    '.fui-accordion .accordion-content'
-  );
-  accordionContent.forEach((item, index) => {
-    const iconPlus = item.querySelector('.fui-accordion .icon-plus');
-    const iconMinus = item.querySelector('.fui-accordion .icon-minus');
-    let header = item.querySelector('header');
-    item.classList.remove('open');
-    header.addEventListener('click', () => {
-      item.classList.toggle('open');
+  function getParent(el, parentSelector) {
+    let element = el;
 
-      let description = item.querySelector('.description');
-      if (item.classList.contains('open')) {
-        description.style.height = `${description.scrollHeight}px`;
-        iconPlus.classList.add('hidden');
-        iconMinus.classList.add('active');
-      } else {
-        description.style.height = '0px';
-        iconPlus.classList.remove('hidden');
-        iconMinus.classList.remove('active');
+    if (!element) {
+      return element;
+    }
+
+    while (element.parentElement) {
+      if (element.parentElement.matches(parentSelector)) {
+        return element.parentElement;
       }
-      removeOpen(index);
-    });
-  });
-
-  function removeOpen(index1) {
-    accordionContent.forEach((item2, index2) => {
-      const iconPlus = item2.querySelector('.fui-accordion .icon-plus');
-      const iconMinus = item2.querySelector('.fui-accordion .icon-minus');
-      if (index1 != index2) {
-        item2.classList.remove('open');
-
-        let des = item2.querySelector('.description');
-        des.style.height = '0px';
-        iconPlus.classList.remove('hidden');
-        iconMinus.classList.remove('active');
-      }
-    });
+      element = element.parentElement;
+    }
+    return element;
   }
+
+  const handleClick = (ev) => {
+    const el = ev.currentTarget;
+    const trView = getParent(el, 'tr.view');
+    const trFold = trView?.nextElementSibling;
+    const foldContent = trFold?.querySelector('.fold-content-wrap');
+
+    trView?.classList.toggle('open');
+    trFold?.classList.toggle('open');
+
+    if (trFold?.classList.contains('open')) {
+      foldContent?.setAttribute(
+        'style',
+        `height: ${foldContent.scrollHeight}px`
+      );
+      return true;
+    }
+    foldContent?.setAttribute('style', `height: 0px`);
+
+    return true;
+  };
+
+  const btnAccordionTableList = document.querySelectorAll(
+    'button.td-btn-accordion'
+  );
+
+  Array.from(btnAccordionTableList).forEach((btn) => {
+    btn?.addEventListener('click', handleClick);
+  });
 }
 
 function displayReceipts(receiptsData) {
   if (!receiptsData) return;
-  const receiptsContainer = document.querySelector('.fui-accordion');
+  const receiptsContainer = document.querySelector('.table-accordion-body');
   receiptsData.forEach((receipt) => {
-    receiptsContainer.innerHTML += ` <div class="accordion-content">
-    <header>
-      <span class="title">Receipt: #${
-        receipt.id
-      }<strong style="float:right">Purchase Date: ${formatUTCDate(
-      receipt.purchaseDate
-    )}</strong></span>
-      <span class="icon icon-plus">
+    const purchaseDate = formatUTCDate(receipt.purchaseDate);
+    receiptsContainer.innerHTML += `
+    <tr class="view">
+    <td>
+      <button class="td-btn-accordion">
         <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
+          fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7Z"
-            fill="currentColor"
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
           />
         </svg>
-      </span>
-      <span class="icon icon-minus">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12Z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-    </header>
-
-    <div class="description">
-  <div class="buyer-info"><strong>Buyer:</strong> ${receipt.buyerName}</div>
-  <div class="products-list">
-    <div class="product-header">
-      <strong>Product</strong>
-      <span class="price-header"><strong>Price</strong></span>
-    </div>
-    ${receipt.products
-      .map(
-        (item) => `
-      <div class="product-item">
-        ${item.product.title}
-        <span class="item-price">${formatMoney(
-          item.quantity * (item.product.discountedprice || item.product.price)
-        )}</span><br>
-        ${item.quantity} x ${formatMoney(
-          item.product.discountedprice || item.product.price
-        )}
+      </button>
+    </td>
+    <td class="pcs">${receipt.id}</td>
+    <td class="pcs">${receipt.buyerName}</td>
+    <td class="cur">${formatMoney(receipt.totalPayment)}</td>
+    <td class="per">${purchaseDate}</td>
+  </tr>
+  <tr class="fold">
+    <td colspan="5">
+      <div class="fold-content-wrap">
+        <div class="fold-content">
+          <h3 style="text-align:center">Receipt ID: ${receipt.id}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product name</th>
+                <th>Price</th>
+                <th style="
+                text-align: center;
+                vertical-align: middle;
+            ">Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${receipt.products
+                .map(
+                  (item) => `
+                <tr>
+                  <td>${item.product.title}</td>
+                  <td>${formatMoney(
+                    item.product.discountedprice || item.product.price
+                  )}</td>
+                  <td style="
+                  text-align: center;
+                  vertical-align: middle;
+              ">${item.quantity}</td> 
+                  <td>${formatMoney(
+                    item.quantity *
+                      (item.product.discountedprice || item.product.price)
+                  )}</td>
+                </tr>
+              `
+                )
+                .join('')}
+              <tr style="background-color:whitesmoke">
+                <td colspan="3" style="padding:8px; text-align: right;">Total Payment:</td>
+                <td>${formatMoney(receipt.totalPayment)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    `
-      )
-      .join('')}
-  </div>
-  <div class="total-price">Total: ${formatMoney(receipt.totalPayment)}</div>
-</div>
+    </td>
+  </tr>
 
-  </div>
   `;
   });
 }
