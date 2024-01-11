@@ -511,7 +511,7 @@ function createHeaderFooter() {
   headerEl.innerHTML = `
   <a id="header-left" href="${rootUrl}">
     <img
-      src="https://drive.google.com/uc?export=view&id=1c-x6Uzbj6xHtiYaJLznjwpuVfinIYOkW"
+      src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/furniologo.png?alt=media&token=4240c28c-1d73-409b-9530-7d9899d7565b"
       width="50px"
       height="32px"
     />
@@ -533,23 +533,23 @@ function createHeaderFooter() {
 
   <div id="header-right">
     <a href="#" onclick="showLoginModal()" class="user-btn user-inactive">
-      <img src="https://drive.google.com/uc?export=view&id=1sqy8Tglu9slCG_hqZ0Az3arSvQseHFQ_" />
+      <img src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/mdi_account-alert-outline.png?alt=media&token=a7de1631-6e7e-4021-890b-4fe0ba4b3ea8" />
       <span>Login</span>
     </a>
 
     <a class="user-btn user-active" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
-      <img src="https://drive.google.com/uc?export=view&id=1sqy8Tglu9slCG_hqZ0Az3arSvQseHFQ_" />
+      <img src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/mdi_account-alert-outline.png?alt=media&token=a7de1631-6e7e-4021-890b-4fe0ba4b3ea8" />
       <span id="username-placeholder"></span>
       <div class="dropdown"><button>Your Profile</button> <button onclick="navigateReceipt(event)">Your Purchase</button></div>
     </a>
 
     <a href="#">
-      <img class="small-icon" src="https://drive.google.com/uc?export=view&id=1bLLsalIsgpK86L_cjS-yICHnMhnQB3UC" />
+      <img class="small-icon" src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/akar-icons_heart.png?alt=media&token=3ff8f038-427a-4130-ae24-ef7dca5c20c0" />
     </a>
     <a id="btn-cart" href="${rootUrl}/cart/">
       <img
         class="small-icon"
-        src="https://drive.google.com/uc?export=view&id=1E3oMrXbkhv_HqFeg1H_kRaLJlk5JjL5I"
+        src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/ant-design_shopping-cart-outlined.png?alt=media&token=4168bdd4-5abb-4385-b659-2fa651b2277e"
       />
       <div class="number-container">
     <span class="number">0</span>
@@ -558,7 +558,7 @@ function createHeaderFooter() {
     <a href="#" onclick="onClickLogout()">
       <img
         class="small-icon user-active"
-        src="https://drive.google.com/uc?export=view&id=1U3QAfC-pUTKYTSCUjTj9eASzg07pOR6n"
+        src="https://firebasestorage.googleapis.com/v0/b/furniture-b7e7f.appspot.com/o/sign-out.png?alt=media&token=544b348b-1478-43f9-8795-baf0772dc3b3"
       />
     </a>
   </div>

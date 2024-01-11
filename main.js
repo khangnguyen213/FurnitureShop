@@ -155,42 +155,6 @@ function displayCart() {
   const subtotalEl = document.getElementById('payment_subtotal');
   const totalEl = document.getElementById('payment_total');
   const discountedEl = document.getElementById('payment_discounted');
-
-  // const cards = document.getElementById('productsList');
-  // let productsHtml = ``;
-
-  // if (data.products.length === 0) {
-  //   cards.innerHTML =
-  //     '<p style="text-align:center; grid-column: 1 / end">Your cart is empty</p>';
-  //   return;
-  // }
-  // data.products.forEach(
-  //   ({ product, quantity }) =>
-  //     (productsHtml += `<div class="card">
-  //     <button class="btn-delete" onclick="onDeleteCart('${product._id}', '${
-  //       product.title
-  //     }')"><img src="https://cdn-icons-png.flaticon.com/512/7124/7124232.png" width="100%"/></button>
-  //   <img src=${product.images[0]} />
-  //   <div class="content">
-  //     <h2>${product.title}</h2>
-  //     <div class="price">
-  //       <p class="discount-price"></p>
-  //       <p class="normal-price">${formatMoney(product.price)}</p>
-  //     </div>
-  //     <div class="buttons">
-  //     <button class="button1" onclick="onAddCart('${product._id}',-1, '${
-  //       product.title
-  //     }')">-</button>
-  //     <h2>${quantity}</h2>
-  //     <button class="button2" onclick="onAddCart('${product._id}',1, '${
-  //       product.title
-  //     }')">+</button>
-  //   </div>
-  //   </div>
-  // </div>`)
-  // );
-  // cards.innerHTML = productsHtml;
-
   const table_body = document.querySelector('.fui-table-body');
   let bodyHtml = ``;
   if (data.products.length === 0) {
