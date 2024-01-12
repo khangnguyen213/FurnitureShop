@@ -207,7 +207,7 @@ function onSubmitRegister(e) {
       fullname: document.getElementById('register-fullname').value,
       password: document.getElementById('register-password').value,
     };
-    fetch('https://furniture-shop-be.vercel.app/account', {
+    fetch(`${Global.BASE_SERVER}/account`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -271,7 +271,7 @@ function onSubmitLogin(e) {
     email: document.getElementById('login-email').value,
     password: document.getElementById('login-password').value,
   };
-  fetch('https://furniture-shop-be.vercel.app/account/login', {
+  fetch(`${Global.BASE_SERVER}/account/login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

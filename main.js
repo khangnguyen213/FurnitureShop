@@ -22,7 +22,7 @@ async function onAddCart(productId, quantity, productTitle) {
   };
   const loadingSpiner = document.getElementById('loading-spinner');
   loadingSpiner.style.display = 'flex';
-  const response = await fetch(`https://furniture-shop-be.vercel.app/cart`, {
+  const response = await fetch(`${Global.BASE_SERVER}/cart`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -65,7 +65,7 @@ async function onDeleteCart(productId, productTitle) {
   };
   const loadingSpiner = document.getElementById('loading-spinner');
   loadingSpiner.style.display = 'flex';
-  const response = await fetch(`https://furniture-shop-be.vercel.app/cart`, {
+  const response = await fetch(`${Global.BASE_SERVER}/cart`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
@@ -86,15 +86,17 @@ async function onDeleteCart(productId, productTitle) {
 
 let pageNumber = 1;
 
-async function fetchProducts() {
+async function fetchProducts(keyword) {
   console.log('Fetching...');
   const loadingSpiner = document.getElementById('loading-spinner');
   loadingSpiner.style.display = 'flex';
   const cards = document.getElementById('productsList');
   let productsHtml = ``;
-
+  const request = keyword ? `keyword=${keyword}` : '';
   const response = await fetch(
-    `https://furniture-shop-be.vercel.app/product?pageNumber=${pageNumber++}&nPerPage=8`
+    `${
+      Global.BASE_SERVER
+    }/product?pageNumber=${pageNumber++}&nPerPage=8&${request}`
   );
   const data = await response.json();
   data.products.forEach(
@@ -116,6 +118,7 @@ async function fetchProducts() {
 
   </div>`)
   );
+
   cards.innerHTML += productsHtml;
   loadingSpiner.style.display = 'none';
 }
@@ -130,9 +133,7 @@ async function fetchCarts() {
 
   // const loadingSpiner = document.getElementById('loading-spinner');
   // loadingSpiner.style.display = 'flex';
-  const response = await fetch(
-    `https://furniture-shop-be.vercel.app/cart?id=${accountId}`
-  );
+  const response = await fetch(`${Global.BASE_SERVER}/cart?id=${accountId}`);
   const data = await response.json();
   // loadingSpiner.style.display = 'none';
   if (data) {
@@ -192,4 +193,11 @@ function displayCart() {
   subtotalEl.innerText = `${formatMoney(data.totalPrice)}`;
   discountedEl.innerText = `${formatMoney(data.totalDiscounted)}`;
   totalEl.innerText = `${formatMoney(data.totalDiscountedPrice)}`;
+}
+
+function handleSearch(e) {
+  e.preventDefault();
+  pageNumber = 1;
+  document.getElementById('productsList').innerHTML = '';
+  fetchProducts(e.target.search.value);
 }

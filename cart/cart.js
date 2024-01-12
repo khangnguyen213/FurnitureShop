@@ -9,17 +9,14 @@ async function checkout() {
   const loadingSpiner = document.getElementById('loading-spinner');
   loadingSpiner.style.display = 'flex';
   try {
-    const response = await fetch(
-      `https://furniture-shop-be.vercel.app/receipt`,
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ accountId }),
-      }
-    );
+    const response = await fetch(`${Global.BASE_SERVER}/receipt`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ accountId }),
+    });
     const data = await response.json();
 
     let receiptData = {

@@ -52,15 +52,22 @@
           </ul>
         </div>
       </div>
+      <form class="search-form" onsubmit="handleSearch(event)" role="search">
+        <label for="search">Search for stuff</label>
+        <input id="search" type="search" placeholder="Search..." autofocus />
+        <button type="submit">Go</button>
+      </form>
     </section>
 
     <section id="section3">
       <div class="cards" id="productsList">
         <!-- fetchProduct here -->
       </div>
+      <button class="btn-1" onclick="fetchProducts()">Show More</button>
     </section>
 
     <footer></footer>
+    <script src="../global.js"></script>
     <script src="../main.js"></script>
     <script
       type="text/javascript"

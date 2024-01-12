@@ -9,9 +9,7 @@ async function fetchReceipts() {
   const loadingSpiner = document.getElementById('loading-spinner');
   loadingSpiner.style.display = 'flex';
 
-  const response = await fetch(
-    `https://furniture-shop-be.vercel.app/receipt?id=${accountId}`
-  );
+  const response = await fetch(`${Global.BASE_SERVER}/receipt?id=${accountId}`);
   const data = await response.json();
 
   let receiptsData = [];
