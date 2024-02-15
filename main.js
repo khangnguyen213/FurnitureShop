@@ -96,7 +96,14 @@ async function fetchProducts(keyword) {
   const response = await fetch(
     `${
       Global.BASE_SERVER
-    }/product?pageNumber=${pageNumber++}&nPerPage=8&${request}`
+    }/product?pageNumber=${pageNumber++}&nPerPage=8&${request}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    }
   );
   const data = await response.json();
   data.products.forEach(
